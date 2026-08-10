@@ -123,65 +123,6 @@ void LineDrawer2D_draw(LineDrawer2D *self, vec3 start, vec3 end, vec3 color, flo
 
     // Clean up binding
     glBindVertexArray(0);
-
-    // // Compute vector v = end - start
-    // vec3 v;
-    // glm_vec3_sub(end, start, v);
-
-    // // centerPosition = start + v / 2
-    // vec3 center;
-    // glm_vec3_scale(v, 0.5f, center);
-    // glm_vec3_add(start, center, center);
-
-    // // length = ||v||
-    // float length = glm_vec3_norm(v);
-    // vec3 norm;
-    // if (length > 1e-8f)
-    // {
-    //     glm_vec3_normalize_to(v, norm);
-    // }
-    // else
-    // {
-    //     // Degenerate segment: point; pick X axis
-    //     norm[0] = 1.0f;
-    //     norm[1] = 0.0f;
-    //     norm[2] = 0.0f;
-    //     length = 0.0f;
-    // }
-
-    // versor rotation;
-    // vec3 from = { 1.0f, 0.0f, 0.0f };
-    // MathHelper_rotationTo(from, norm, rotation);
-
-    // // Build model matrix
-    // mat4 model;
-    // glm_mat4_identity(model);
-    // glm_translate(model, center);
-
-    // mat4 rotMat;
-    // glm_quat_mat4(rotation, rotMat);
-    // glm_mat4_mul(model, rotMat, model);
-
-    // mat4 scaleMat = GLM_MAT4_IDENTITY_INIT;
-    // scaleMat[0][0] = length;
-    // scaleMat[1][1] = thickness;
-    // scaleMat[2][2] = thickness;
-    // glm_mat4_mul(model, scaleMat, model);
-
-    // mat4 mvp;
-    // glm_mat4_mul(self->projViewMatrix, model, mvp);
-
-    // // Upload uniforms
-    // glUseProgram(self->shaderProgram);
-    // glUniformMatrix4fv(self->uMvpLocation, 1, GL_FALSE, (const GLfloat *)mvp);
-    // glUniform3fv(self->uColorLocation, 1, (const GLfloat *)color);
-
-    // // Bind VAO and Draw
-    // glBindVertexArray(self->vao);
-    // glDrawArrays(GL_TRIANGLE_STRIP, 0, self->vertCount);
-
-    // // Clean up binding
-    // glBindVertexArray(0);
 }
 
 void LineDrawer2D_cleanup(LineDrawer2D *self)
